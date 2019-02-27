@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>suiviAvisDialogBase</class>
+ <widget class="QDialog" name="suiviAvisDialogBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>339</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Suivi Avis</string>
+  </property>
+  <widget class="QDialogButtonBox" name="button_box">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>300</y>
+     <width>91</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Close</set>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>541</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="toolTip">
+       <string/>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="Parametres">
+       <attribute name="title">
+        <string>Parametres</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>491</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>  QGis </string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <widget class="QLineEdit" name="defNomLayer">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>19</y>
+           <width>391</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Validation</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_7">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>71</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Nom Layer</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>491</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string> LibreOffice </string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <widget class="QLineEdit" name="defNomOngletSuivi">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>19</y>
+           <width>361</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Suivi</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_8">
+         <property name="geometry">
+          <rect>
+           <x>6</x>
+           <y>14</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nom de l'onglet de &lt;span style=&quot; font-weight:600;&quot;&gt;suivi&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_9">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>100</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nom de la colonne &lt;span style=&quot; font-weight:600;&quot;&gt;Code Insee&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="defNomCodeInsee">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>104</y>
+           <width>361</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>CodeInsee</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_10">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>129</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nom de la colonne &lt;span style=&quot; font-weight:600;&quot;&gt;Date Validation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="defNomColDateValide">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>133</y>
+           <width>361</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Date_reception</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_11">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>159</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nom de la colonne &lt;span style=&quot; font-weight:600;&quot;&gt;Observations&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="defColNomObservations">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>163</y>
+           <width>361</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Observations</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_12">
+         <property name="geometry">
+          <rect>
+           <x>6</x>
+           <y>40</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nom de l'onglet de &lt;span style=&quot; font-weight:600;&quot;&gt;Mailing&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="defNomOngletMailing">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>45</y>
+           <width>361</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Mailing</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Masque">
+       <attribute name="title">
+        <string>Masque</string>
+       </attribute>
+       <attribute name="toolTip">
+        <string>Creation masque</string>
+       </attribute>
+       <widget class="QPushButton" name="extractPolyButton">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>220</y>
+          <width>121</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Extract Polygonnes</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="MasqueListeCouches">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>40</y>
+          <width>381</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>42</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Contenus dans :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Elements de :</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="MasqueLignePoint">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>10</y>
+          <width>381</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="limiteEntites">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>211</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>GroupBox</string>
+        </property>
+        <widget class="QRadioButton" name="toutesEntites">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>121</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Toutes les entitées</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="entitesVisibles">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>40</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Entités visibles seulement</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="selectionSeulement">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>141</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Séléction seulement</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>80</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nom de la couche :</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="MasqueNomCouche">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>100</y>
+          <width>251</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Tab2Map">
+       <attribute name="title">
+        <string>Tab2map</string>
+       </attribute>
+       <attribute name="toolTip">
+        <string>Lecture du tableur et mise à jour suivi</string>
+       </attribute>
+       <widget class="QPushButton" name="updateMapButton">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>220</y>
+          <width>121</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Update Map</string>
+        </property>
+       </widget>
+       <widget class="QgsFileWidget" name="TabFileWidget">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>10</y>
+          <width>371</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="dialogTitle">
+         <string>Tableur de suivi</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>15</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Tableur LibreOffice :</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="TabOnglet">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>50</y>
+          <width>361</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>50</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Onglet</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>120</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Layer à mettre à jour</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="TabLayer">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>120</y>
+          <width>361</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Tools">
+       <attribute name="title">
+        <string>Tools</string>
+       </attribute>
+       <widget class="QPushButton" name="butGenCSV">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>121</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Genere CSV Mailing</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="butListInsee">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>121</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Liste code Insee</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLineEdit" name="Message">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>310</y>
+     <width>441</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFileWidget</class>
+   <extends>QWidget</extends>
+   <header>qgsfilewidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>button_box</sender>
+   <signal>accepted()</signal>
+   <receiver>suiviAvisDialogBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_box</sender>
+   <signal>rejected()</signal>
+   <receiver>suiviAvisDialogBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
