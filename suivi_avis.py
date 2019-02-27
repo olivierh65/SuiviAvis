@@ -257,6 +257,7 @@ class suiviAvis:
     def lecture_onglet(self, chemin):
         print("fileChanged : " + chemin)
         self.message ("Lecture des onglets")
+		
         QGuiApplication.setOverrideCursor(Qt.WaitCursor)
         c=pe.get_book(file_name=chemin)
         self.dlg.TabOnglet.clear()
