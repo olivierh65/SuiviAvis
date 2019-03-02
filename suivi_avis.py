@@ -24,7 +24,7 @@
 
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, Qt
 from PyQt5.QtGui import QIcon, QCursor, QGuiApplication
-from PyQt5.QtWidgets import QAction, QFileDialog
+from PyQt5.QtWidgets import QAction, QFileDialog, QListWidgetItem
 
 from qgis.core import QgsVectorLayer, QgsProject, QgsMapLayer, QgsWkbTypes
 from qgis.gui import QgsFileWidget
@@ -202,6 +202,7 @@ class suiviAvis:
             self.prep_extract()
         elif(tabName == "Tab2map"):
             self.prep_office()
+    
     def genCSV(self):
         fs = QFileDialog()
         fs.setWindowTitle ("-- Tableur de suivi --")
@@ -285,7 +286,12 @@ class suiviAvis:
                 elif (QgsWkbTypes.geometryType(layer.wkbType()) == QgsWkbTypes.GeometryType. PointGeometry) or \
                     (QgsWkbTypes.geometryType(layer.wkbType()) == QgsWkbTypes.GeometryType. LineGeometry):
                     if (QgsProject.instance().layerTreeRoot().findLayer(layer.id()).isVisible()):
-                        self.dlg.MasqueLignePoint.addItem(layer.name(), layer)
+                        item = QListWidgetItem()
+                        item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+                        item.setCheckState(Qt.Unchecked)
+                        item.setText(layer.name())
+                        item.setData(QtCore.Qt.UserRole, layer)
+                        self.dlg.MasqueLignePoint.addItem(item)
         self.dlg.MasqueNomCouche.setText(self.dlg.defNomLayer.displayText())
                             
     def message(self, msg):

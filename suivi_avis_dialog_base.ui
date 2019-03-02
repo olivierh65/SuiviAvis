@@ -45,7 +45,7 @@
        <string/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -287,8 +287,8 @@
        <widget class="QComboBox" name="MasqueListeCouches">
         <property name="geometry">
          <rect>
-          <x>90</x>
-          <y>40</y>
+          <x>10</x>
+          <y>160</y>
           <width>381</width>
           <height>22</height>
          </rect>
@@ -298,7 +298,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>42</y>
+          <y>140</y>
           <width>81</width>
           <height>20</height>
          </rect>
@@ -320,22 +320,12 @@
          <string>Elements de :</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="MasqueLignePoint">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>10</y>
-          <width>381</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QGroupBox" name="limiteEntites">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>80</y>
-          <width>211</width>
+          <x>360</x>
+          <y>20</y>
+          <width>171</width>
           <height>80</height>
          </rect>
         </property>
@@ -391,27 +381,37 @@
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
-          <x>270</x>
-          <y>80</y>
-          <width>101</width>
+          <x>40</x>
+          <y>200</y>
+          <width>131</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Nom de la couche :</string>
+         <string>Nom de la couche créée :</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="MasqueNomCouche">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>100</y>
+          <x>40</x>
+          <y>220</y>
           <width>251</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
          <string/>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="MasqueLignePoint">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>27</y>
+          <width>341</width>
+          <height>111</height>
+         </rect>
         </property>
        </widget>
       </widget>
