@@ -31,6 +31,8 @@ from qgis.gui import QgsMessageBar
 
 import processing
 
+import os.path
+
 class extractPoly():
     '''
     classdocs
@@ -64,21 +66,16 @@ class extractPoly():
         rule.setLabel("Valide")
         rule.setFilterExpression("\"valide\" is not null and \"supprime\" is null")
         # root_rule.appendChild(rule)
-        
-        symb_def = { 'capstyle' : 'square',
-                    'customdash' : '5;2',
-                    'customdash_unit' : 'MM',
-                    'customdash_unit' : '0',
-                    'line_style' : 'dash',
-                    'line_color' : '200,194,194,255',
-                    'joinstyle' : 'bevel',
-                    'line_width' : '0.80',
-                    'line_width_unit' : 'MM',
-                    'offset' : '0',
-                    'use_custom_dash' : '1'}
+          
+        symb_def = { 'color' : '255,127,0,104',
+                    'outline_color' : '104,94,94,255',
+                    'outline_style' : 'dash',
+                    'outline_width' : '0.8',
+                    'outline_width_unit' : 'MM',
+                    'style' : 'solid'}
         symbol = QgsFillSymbol.createSimple (symb_def)
         
-        symbol.changeSymbolLayer(0, QgsSimpleLineSymbolLayer.create(symb_def))
+        # symbol.changeSymbolLayer(0, QgsSimpleLineSymbolLayer.create(symb_def))
         
         rule = QgsRuleBasedRenderer.Rule(symbol)
         rule.setLabel("En attente")
@@ -95,10 +92,21 @@ class extractPoly():
         # 'PREDICATE' : [0] }
         ss = False
         layers = []
+        if (len(self.parent.dlg.defNomLayer.displayText().strip()) > 0):
+            shapeout = self.parent.dlg.defNomLayer.displayText().strip()
+        else:
+            shapeout = "Masque"
+        out = QgsProject.instance().absolutePath() + "/" + shapeout + ".shp"
+        
+        if (not self.parent.dlg.overwriteMask.isChecked()):
+            if (os.path.isfile(out)):
+                self.parent.iface.messageBar().pushCritical ("Info", "Fichier {0} existant et pas d'ecrasement demande".format(out))
+                return
         # print ("Lancement de la recherche\n")
         filter_invalid = processing.QgsSettings().value('Processing/Configuration/FILTER_INVALID_GEOMETRIES')
         # ignore les entites invalides
         processing.QgsSettings().setValue('Processing/Configuration/FILTER_INVALID_GEOMETRIES', '0')
+        processing.QgsSettings().sync()
         for ll_item in range(0, self.parent.dlg.MasqueLignePoint.count()):
             item=self.parent.dlg.MasqueLignePoint.item(ll_item)
             if (item.checkState() != Qt.Checked):
@@ -128,19 +136,19 @@ class extractPoly():
             except Exception as err:
                 self.parent.iface.messageBar().pushCritical ("Erreur", "Exception : {0}".format(err))
                 processing.QgsSettings().setValue('Processing/Configuration/FILTER_INVALID_GEOMETRIES', filter_invalid)
+                processing.QgsSettings().sync()
                 QGuiApplication.restoreOverrideCursor()
         
         print ("Nombre de layers : {0}\n".format(len(layers)))
-        if (len(layers) > 1 ):
-            paramin = { 'LAYERS' : layers, 'CRS' : None, 'OUTPUT' : 'TEMPORARY_OUTPUT' }
+        if (len(layers) >= 1 ):
+            paramin = { 'LAYERS' : layers, 'CRS' : None, 'OUTPUT' : out }
             res = processing.run ('native:mergevectorlayers', paramin)
-            l=res['OUTPUT']
-            # print ("Merge : {0}\n".format(l))
-        elif (len(layers) == 1):
-            l=layers[0]
+            l=QgsVectorLayer(res['OUTPUT'], shapeout, "ogr")
+            print ("Merge : {0}\n".format(l))
 
         QGuiApplication.restoreOverrideCursor()
         processing.QgsSettings().setValue('Processing/Configuration/FILTER_INVALID_GEOMETRIES', filter_invalid)
+        processing.QgsSettings().sync()
 
         # Ajout des champs
         res=l.dataProvider().addAttributes([QgsField("valide", QVariant.Date), QgsField("note", QVariant.String), \

@@ -45,7 +45,7 @@
        <string/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -58,9 +58,9 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>10</y>
+          <y>0</y>
           <width>491</width>
-          <height>51</height>
+          <height>61</height>
          </rect>
         </property>
         <property name="title">
@@ -72,9 +72,9 @@
         <widget class="QLineEdit" name="defNomLayer">
          <property name="geometry">
           <rect>
-           <x>80</x>
-           <y>19</y>
-           <width>391</width>
+           <x>110</x>
+           <y>11</y>
+           <width>151</width>
            <height>20</height>
           </rect>
          </property>
@@ -86,13 +86,55 @@
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>20</y>
-           <width>71</width>
+           <y>10</y>
+           <width>81</width>
            <height>20</height>
           </rect>
          </property>
          <property name="text">
-          <string>Nom Layer</string>
+          <string>Nom Shapefile</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_13">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>26</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Nom de la colonne &lt;span style=&quot; font-weight:600;&quot;&gt;Code Insee&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="defDbCodeInsee">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>33</y>
+           <width>361</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>insee_com</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="overwriteMask">
+         <property name="geometry">
+          <rect>
+           <x>270</x>
+           <y>10</y>
+           <width>91</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Ecraser fichier</string>
          </property>
         </widget>
        </widget>
@@ -100,9 +142,9 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>60</y>
+          <y>70</y>
           <width>491</width>
-          <height>191</height>
+          <height>181</height>
          </rect>
         </property>
         <property name="title">
@@ -115,7 +157,7 @@
          <property name="geometry">
           <rect>
            <x>110</x>
-           <y>19</y>
+           <y>24</y>
            <width>361</width>
            <height>20</height>
           </rect>
@@ -128,7 +170,7 @@
          <property name="geometry">
           <rect>
            <x>6</x>
-           <y>14</y>
+           <y>19</y>
            <width>101</width>
            <height>31</height>
           </rect>
@@ -147,7 +189,7 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>100</y>
+           <y>87</y>
            <width>101</width>
            <height>31</height>
           </rect>
@@ -163,7 +205,7 @@
          <property name="geometry">
           <rect>
            <x>110</x>
-           <y>104</y>
+           <y>91</y>
            <width>361</width>
            <height>20</height>
           </rect>
@@ -176,7 +218,7 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>129</y>
+           <y>116</y>
            <width>101</width>
            <height>31</height>
           </rect>
@@ -192,7 +234,7 @@
          <property name="geometry">
           <rect>
            <x>110</x>
-           <y>133</y>
+           <y>120</y>
            <width>361</width>
            <height>20</height>
           </rect>
@@ -205,7 +247,7 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>159</y>
+           <y>146</y>
            <width>101</width>
            <height>31</height>
           </rect>
@@ -221,7 +263,7 @@
          <property name="geometry">
           <rect>
            <x>110</x>
-           <y>163</y>
+           <y>150</y>
            <width>361</width>
            <height>20</height>
           </rect>
@@ -234,7 +276,7 @@
          <property name="geometry">
           <rect>
            <x>6</x>
-           <y>40</y>
+           <y>45</y>
            <width>101</width>
            <height>31</height>
           </rect>
@@ -253,7 +295,7 @@
          <property name="geometry">
           <rect>
            <x>110</x>
-           <y>45</y>
+           <y>50</y>
            <width>361</width>
            <height>20</height>
           </rect>
@@ -381,7 +423,7 @@
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>10</x>
           <y>200</y>
           <width>131</width>
           <height>16</height>
@@ -394,9 +436,9 @@
        <widget class="QLineEdit" name="MasqueNomCouche">
         <property name="geometry">
          <rect>
-          <x>40</x>
+          <x>10</x>
           <y>220</y>
-          <width>251</width>
+          <width>161</width>
           <height>20</height>
          </rect>
         </property>

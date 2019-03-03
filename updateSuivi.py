@@ -32,6 +32,7 @@ class updateSuivi():
         insee = s.row_at(0).index(self.parent.dlg.defNomCodeInsee.displayText())
         observations = s.row_at(0).index(self.parent.dlg.defColNomObservations.displayText())
         layer = self.parent.dlg.TabLayer.currentData()
+        print ("Layer : {0}\n".format(layer.id()))
         attr_idx=-1
         note_idx=-1
         for i in layer.attributeList():
@@ -43,13 +44,18 @@ class updateSuivi():
         if (attr_idx == -1):
             print("PAs de colonne 'valide'")        
             return
+        if (len(self.parent.dlg.defDbCodeInsee.displayText().strip()) > 0):
+            col_insee = self.parent.dlg.defDbCodeInsee.displayText().strip()
+        else:
+            col_insee = "insee"
         layer.startEditing()
         for i in range(1, len(s.column_at(0))-1):
             if (s[i,recep]):
                 print (s[i, insee])
-                for f in layer.getFeatures("insee = {0}".format(s[i, insee])):
+                for f in layer.getFeatures("{0} = {1}".format(col_insee, s[i, insee])):
                     # convertit la date au format ISO
                     dd = s[i, recep].strftime("%Y-%m-%d")
+                    print ("Insee : {0} ==> {1}\n".format(s[i, insee], dd))
                     layer.changeAttributeValue(f.id(), attr_idx, dd )
                     if(note_idx > 0):
                         layer.changeAttributeValue(f.id(), note_idx, s[i, observations])
