@@ -5,6 +5,8 @@ Created on 28 oct. 2018
 '''
 from PyQt5.QtCore import QSettings, QVariant, QCoreApplication, Qt
 from PyQt5.QtGui import  QGuiApplication, QCursor
+from qgis.gui import QgsMessageBar
+from qgis.core import Qgis, QgsMessageLog
 import pyexcel as pe
 import datetime
 
@@ -30,24 +32,45 @@ class updateSuivi():
             
         recep = s.row_at(0).index(self.parent.dlg.defNomColDateValide.displayText())
         insee = s.row_at(0).index(self.parent.dlg.defNomCodeInsee.displayText())
+
         observations = s.row_at(0).index(self.parent.dlg.defColNomObservations.displayText())
         layer = self.parent.dlg.TabLayer.currentData()
-        print ("Layer : {0}\n".format(layer.id()))
+        self.parent.message ("Layer : {0}\n".format(layer.id()))
         attr_idx=-1
         note_idx=-1
-        for i in layer.attributeList():
-            if (layer.attributeDisplayName(i) == 'valide'):
-                attr_idx=i
-            elif (layer.attributeDisplayName(i) == 'note'):
-                 note_idx=i
-        
-        if (attr_idx == -1):
-            print("PAs de colonne 'valide'")        
-            return
+        col_insee_exist=-1
         if (len(self.parent.dlg.defDbCodeInsee.displayText().strip()) > 0):
             col_insee = self.parent.dlg.defDbCodeInsee.displayText().strip()
         else:
             col_insee = "insee"
+        self.parent.message("col_insee : {0}\n".format(col_insee))
+        for i in layer.attributeList():
+            if (layer.attributeDisplayName(i) == 'valide'):
+                attr_idx=i
+            elif (layer.attributeDisplayName(i) == 'note'):
+                note_idx=i
+            elif (layer.attributeDisplayName(i) == col_insee):
+                col_insee_exist=i
+        
+        if (col_insee_exist == -1):
+            self.parent.message("Pas de colonne '{0}'. Voir le journal de messages\n".format(col_insee))
+            QgsMessageLog.logMessage("Pas de colonne '{0}'\n".format(col_insee))
+            QgsMessageLog.logMessage("Colonnes existantes : ")
+            lst_col=""
+            for i in layer.attributeList():
+                lst_col += "{0}{1}".format(',' if i > 0 else '', layer.attributeDisplayName(i))
+            QgsMessageLog.logMessage(lst_col)
+            QGuiApplication.restoreOverrideCursor()
+            self.parent.iface.messageBar().pushMessage("Error", "Pas de colonne '{0}'\n Colonnes existantes : {1}".format(col_insee, lst_col), level=Qgis.Critical)
+            return
+        
+        if (attr_idx == -1):
+            self.parent.message("Pas de colonne 'valide'\n")
+            QgsMessageLog.logMessage("Pas de colonne 'valide'\n")
+            QGuiApplication.restoreOverrideCursor()
+            self.parent.iface.messageBar().pushMessage("Error", "Pas de colonne 'valide'", level=Qgis.Critical)
+            return
+            
         layer.startEditing()
         for i in range(1, len(s.column_at(0))-1):
             if (s[i,recep]):
